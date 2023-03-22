@@ -1,0 +1,28 @@
+@use 'sass:math';
+@import "responsive-media";
+
+
+
+@mixin cols{
+    @for $i from 1 through 12{
+        $width: calc($i / 12);
+        
+        .col-#{$i} {
+            width: math.percentage($width);     
+        }
+    }
+
+}
+
+@mixin lg{        
+    @media (max-width: #{$screen-lg-min}) {
+        @content;
+    }
+}
+@mixin sm{        
+    @media (max-width: #{$screen-sm-min}) {
+        @content;
+    }
+}
+
+   

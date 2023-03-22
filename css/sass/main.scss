@@ -1,0 +1,351 @@
+@import 'variable';
+@import "mixin";
+@import "colors";
+@import "font";
+
+@include cols();
+
+$wd: 1%;
+$width:(
+    0: 0,
+    1: ($wd * 5),
+    2: ($wd * 10),
+    3: ($wd * 15),
+    4: ($wd * 20),
+    5: ($wd * 25),
+    6: ($wd * 30),
+    7: ($wd * 35),
+    8: ($wd * 40),
+    9: ($wd * 45),
+    10: ($wd * 50),
+);
+$grid: 1rem;
+/* the map */
+$spacers: (
+  0: 0,
+  1: ($grid * .25),
+  2: ($grid * .5), 
+  3: ($grid * .75),
+  4: ($grid * 1),  
+  5: ($grid * 1.25),
+  6: ($grid * 1.5),
+  7: ($grid * 3.125)   
+);
+$grid-margin: 1rem;
+/* the map */
+$spacers-m: (
+  0: 0,
+  1: ($grid-margin * .25),
+  2: ($grid-margin * .5), 
+  3: ($grid-margin * .75),
+  4: ($grid-margin * 1),  
+  5: ($grid-margin * 1.25),
+  6: ($grid-margin * 1.5),
+  9: ($grid-margin * 1.78),
+  7: ($grid-margin * 3.125),
+  8: ($grid-margin * -1)   
+);
+body{
+margin: 0;
+padding: 0;
+font-family: Arial, Helvetica, sans-serif;
+background-color:  #F8F8F8;
+}
+*{
+box-sizing: border-box;}
+ul,h1,h2,h3,h4,h5,h6,p {
+margin: 0;
+padding: 0;
+}
+.container{
+max-width: 1400px;
+width: 100%;
+margin: 0 auto;
+padding-left: map-get($spacers, 5);
+padding-right: map-get($spacers, 5);
+} 
+h2{
+color: $color-red;
+font-size: $fs-40;
+font-weight: $fw-700;
+text-align: center;
+margin-bottom: 50px;
+}
+.row{
+margin-left: map-get($spacers-m, 8);
+margin-right: map-get($spacers-m, 8);
+display: flex;
+}
+// --------------HEADER----------------
+.header-main{    
+width: 100%;
+background-color: $bg-color-white;
+.navbar-main{
+    padding-top: map-get($spacers, 5);
+    padding-bottom: map-get($spacers, 5);}
+.nav-bar{
+    display: $d-flex;
+    align-items: center;
+    #flip{
+        @include lg{
+         display: block;
+        }
+    }
+    @include lg{
+        justify-content: space-between;
+    }
+}
+
+.col-4.pannel{
+    background-color: $bg-color-white;
+    ul{
+    display: $d-flex;
+    justify-content: space-between;
+    list-style-type: none;
+    padding: 0;
+    li{
+    a{
+    text-decoration: none;
+    color: $color-black;
+    padding: map-get($spacers, 2);}     
+    font-weight: 400;
+    font-size: 20px;
+    &:hover{
+        color: $color-red;
+    }}
+    @include lg{
+        padding: 25px 0;}}
+    @include lg{
+        display: block;
+    }
+    }
+    @include lg{
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 100%;
+      transition: 1s;
+      z-index: 1111;
+      height: 100vh;
+      background: white;
+      text-align: center;     
+      transform: translateY(-100%); 
+    }
+    &.classAdd{
+        @include lg{
+            transform: translateY(0);
+        }
+    }
+    .fa-solid{
+        display: none;
+        @include lg{
+            text-align: right;
+            padding-top: map-get($spacers, 7);
+            padding-right: map-get($spacers, 7);
+            display: block;
+        }
+    }    
+}
+.col-6{
+    display: $d-flex;
+    justify-content: end;
+    position: relative;
+    input{width: 75%;
+        padding-top: map-get($spacers, 2);
+        padding-right: map-get($spacers, 6);
+        padding-bottom: map-get($spacers, 2);
+        padding-left: map-get($spacers, 6);
+        border-radius: 20px;
+        border: 1px solid #B6B6B6;
+        font-size: 13px;
+        @include lg{
+            width: 90%;
+            font-size: 13px;
+        }
+      }
+    .fa-magnifying-glass {
+        position: absolute;
+        right: 20px;
+        top: 11px;
+        color: #9b9b9b;
+      }}
+#flip{
+    display:none;
+}
+// --------------HEADER CLOSE----------------------------
+// --------------BANNER START----------------------------
+.banner-main{
+background-color: $bg-color-ea;
+.container{
+padding: 100px 120px;
+.row{
+display: $d-flex;
+align-items: center;
+@include lg{
+flex-wrap: wrap;}
+.col-8{
+width: 66.66%;
+padding-left: map-get($spacers, 4);
+padding-right: map-get($spacers, 4);
+@include lg{
+    width: 100%;}
+}
+h1{
+    color: $color-red;
+    font-size: $fs-48;
+    margin: map-get($spacers-m, 0);
+    padding-top: map-get($spacers, 6);
+    padding-bottom: map-get($spacers, 6);
+}              
+p{
+    color: $color-gray;
+    font-size: $fs-20;
+    margin: map-get($spacers-m, 0);
+    padding-top: map-get($spacers, 6);
+    padding-bottom: map-get($spacers, 6);
+}
+}
+.col-4{
+    width: 33.33%;
+    height: 280px;
+    padding-left: map-get($spacers, 4);
+    padding-right: map-get($spacers, 4);
+    @include lg{
+    width: 100%;}
+    img{
+        object-fit: cover;
+        height: auto;
+        width: 100%;
+        display: block;                    
+    }}}}
+// --------------BANNER CLOSE----------------------------
+// --------------CARD START----------------------------
+.card-main{
+    .container{        
+        padding-top: 100px;       
+        .card-row{           
+            display: $d-flex;
+            @include lg{
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .col-4{             
+                padding-left: map-get($spacers, 4);
+                padding-right: map-get($spacers, 4);
+                margin-bottom: map-get($spacers-m, 0);
+                flex: 1 1 auto;
+                @include lg{
+                    width: 50%;
+                    margin-bottom: map-get($spacers-m, 9);
+                }
+                @include sm{
+                    width: 100%;
+                    margin-bottom: map-get($spacers-m, 9);
+                }
+                .card-text{
+                    padding: 50px 50px;
+                    border: 1px solid $color-red;
+                    border-radius: 18px;
+                    background-color: $bg-color-white;
+                    .ul-01 {
+                        > li{
+                        font-size: $fs-20;       
+                        color: $color-red;                 
+                        }
+                        .ul-li{
+                            li{
+                                color: $color-gray;
+                                font-weight: $fw-700;
+                                margin-top: map-get($spacers-m,6);
+                            }
+                        }
+                        .ul-li-1{
+                            li{
+                                font-style: italic;
+                                color: $color-gray;
+                                margin-top: map-get($spacers-m,6);
+                            }
+                        }                                             
+                        .ul-li-2{
+                            li{
+                                color: $color-blue;
+                                margin-top: map-get($spacers-m,6);
+                            }
+                        }
+                    }   
+                }
+            }
+        }
+      }  }
+// --------------CARD CLOSE----------------------------
+.img-content-section{
+    .container{        
+        padding-top: 100px;
+        padding-bottom: 100px;
+    }    
+    .row{        
+            display: $d-flex;
+            flex-wrap: wrap;
+            .col-6{
+                width: 50%;
+                @include lg{
+                    width: 100%;
+                }                
+                img{
+                    display: block;
+                    width: 100%;
+                    height: 100%;
+                }
+                .img-content{
+                    padding: 50px;
+                    height: 100%;
+                    display: $d-flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    background-color: $bg-color-ea;
+                    h3{
+                        font-size: 32px;
+                        color: $color-blue;
+                        margin-bottom: map-get($spacers-m,6);
+                    }
+                    p{
+                        margin-bottom: map-get($spacers-m,6);
+                        font-size: 18px;
+                        font-weight: 400;
+                        color: $color-black;
+                    }                   
+                    .btn{
+                        text-decoration: none;
+                        color: $bg-color-white;
+                        font-size: 18px;
+                        font-weight: $fw-700;
+                        padding: 16px 31px;
+                        background-color: $color-black;
+                    }
+                }
+            }
+    }}
+// --------------------IMG-CONTENT START-----
+footer{
+    background-color: $bg-color-ea;
+    .container{
+        padding: 25px 0;
+        display: flex;
+        justify-content: center;
+        @include lg(){
+            flex-direction: column;
+            align-items: center;
+        }
+        h5{
+            font-weight: $fw-700;
+            font-size: $fs-20;
+            margin-bottom: map-get($spacers-m,2);
+        }
+        h6{
+            font-size: 18px;
+            font-weight: 400;
+        }                
+    }
+}
+
+    
